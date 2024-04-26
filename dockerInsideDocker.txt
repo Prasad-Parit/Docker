@@ -1,0 +1,20 @@
+
+#Docker inside docker
+sudo su - root
+yum install docker -y
+systemctl start docker
+docker pull centos
+
+docker images
+docker pull docker:dind
+docker run --privileged -d --name docker2 docker:dind
+docker exec -it docker2 /bin/sh
+
+docker images
+docker pull ubuntu
+
+docker images
+docker pull docker:dind
+docker run --privileged -d --name docker4 docker:dind
+docker exec -it docker3 /bin/sh
+exit
